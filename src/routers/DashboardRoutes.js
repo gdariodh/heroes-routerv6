@@ -10,7 +10,8 @@ const DashBoardRoutes = () => {
   return (
     <>
       <Navbar />
-
+     
+      <div className="container mt-5">
       <Routes>
         <Route path="marvel" element={<MarvelScreen />} />
         <Route path="dc" element={<DcScreen />} />
@@ -18,6 +19,10 @@ const DashBoardRoutes = () => {
         <Route path="hero" element={<Hero />} />
         <Route path="/" element={<MarvelScreen />} />
       </Routes>
+      </div>
+
+
+      
     </>
   );
 };
