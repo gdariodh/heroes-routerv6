@@ -1,4 +1,5 @@
 // leer parametros por url
+import { useMemo } from "react";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import getHeroById from "../../selectors/getHeroById";
 
@@ -6,7 +7,11 @@ const Hero = () => {
   // hero/:heroId
   const { heroId } = useParams();
 
-  const hero = getHeroById(heroId);
+  // si heroId es diferente al anterior ejecuta getHeroById
+  const hero = useMemo(() => getHeroById(heroId), [heroId]);
+
+  // useMemo sirve para memorizar valores y ejecutar funciones si ese state es diferente o cambia
+  // si se mantiene o es el mismo, la funcion condicionada con useMemo no se ejecuta.
 
   const navigate = useNavigate();
 
