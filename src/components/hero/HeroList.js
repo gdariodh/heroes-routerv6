@@ -5,7 +5,7 @@ import HeroCard from "./HeroCard";
 // colocar valor de prop por defecto, en tal caso que no se envie nada
 const HeroList = ({ publisher = "Marvel" }) => {
   // si publisher es diferente ejecuta getHeroesByPublisher
-  const heroes = useMemo(() => getHeroesByPublisher(publisher), publisher);
+  const heroes = useMemo(() => getHeroesByPublisher(publisher), [publisher]);
 
   // si es el mismo publisher no ejecutes de nuevo la fn
 
@@ -13,7 +13,7 @@ const HeroList = ({ publisher = "Marvel" }) => {
     <>
       <hr />
 
-      <div className="row rows-cols-1  rows-cols-3 g-3 mt-5 wrap">
+      <div className="row rows-cols-1  rows-cols-3 g-3 mt-5  animate__animated animate__fadeIn">
         {heroes.map((hero, i) => (
           <>
             <HeroCard
