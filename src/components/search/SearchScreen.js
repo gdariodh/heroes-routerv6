@@ -1,18 +1,39 @@
+import { useNavigate, useLocation } from "react-router-dom";
+import queryString from "query-string"
 import { useForm } from "../../hooks/useForm";
 import getHeroByName from "../../selectors/getHeroByName";
 import HeroCard from "../hero/HeroCard";
+import { useMemo } from "react";
 
 const SearchScreen = () => {
+
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // acceder a la query de la url /search?q=batman 
+  const query = queryString.parse(location.search)
+
+  // extraer q 
+  const {q = ''} = query;
+  // console.log(q);
+
   const [values, handleInputChange, reset] = useForm({
-    searchText: "",
+    searchText: q,
   });
 
-  const heroFileted = getHeroByName("algo");
+  // solo invocar la fn cuando el query sea diferente, es para que no se dispare cada vez que se escriba en el input search
+  const heroFileted = useMemo(() => getHeroByName(q), [q]) 
 
   const handleSearch = (e) => {
     e.preventDefault();
 
-    console.log(values);
+    // console.log(values);
+
+    // mandar el query con la busqueda del form
+
+    // /search?q=batman 
+    navigate(`?q=${values.searchText}`)
   };
 
   return (
@@ -48,6 +69,18 @@ const SearchScreen = () => {
           <h4>Results</h4>
 
           <hr />
+
+          {
+            q === '' ? (
+              <>
+                <div className="alert alert-info">Buscar un heroe</div>
+              </>
+            ) : (heroFileted.length === 0) && (
+              <>
+                <div className="alert alert-danger">No hay resultados de: {q}</div>
+              </>
+            )
+          }
 
           {heroFileted.map((hero) => (
             <>

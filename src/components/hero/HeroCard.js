@@ -6,7 +6,7 @@ const HeroCard = (props) => {
   const imagePath = `/assets/${props.id}.jpg`;
 
   return (
-    <div className="">
+    <div className="animate__animated animate__fadeIn">
       <div className="card">
         <div className="row no-gutters">
           <div className="col-4">

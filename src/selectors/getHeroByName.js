@@ -1,11 +1,17 @@
 import { heroes } from "../data/heroes";
 
 const getHeroByName = (name = "") => {
+
+console.log('fn called');  
+
   name = name.toLowerCase();
 
-//   return heroes.filter((hero) => hero.superhero.toLowerCase().includes(name));
+  if(name === ''){
+    return []
+  }
 
-return heroes;
+  return heroes.filter((hero) => hero.superhero.toLowerCase().includes(name));
+
 };
 
 export default getHeroByName;
