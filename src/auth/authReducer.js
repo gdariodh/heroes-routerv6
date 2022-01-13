@@ -17,6 +17,7 @@ export const authReducer = (state = {}, action) => {
       };
 
     case types.logout:
+      localStorage.removeItem('user');
       return {
         ...state,
         logged: false,
