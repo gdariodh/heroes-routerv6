@@ -12,7 +12,7 @@ export const authReducer = (state = {}, action) => {
       return {
         ...state,
         // agregar todo el objeto mandando por el action
-        ...action.payload,
+        user: {...action.payload},
         logged: true,
       };
 
