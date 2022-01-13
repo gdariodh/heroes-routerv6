@@ -1,6 +1,4 @@
 import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
-// components
-import { Navbar } from "../components/ui/Navbar";
 // screens
 import LoginScreen from "../components/login/LoginScreen";
 import DashBoardRoutes from "./DashboardRoutes";

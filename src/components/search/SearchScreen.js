@@ -18,7 +18,7 @@ const SearchScreen = () => {
   const {q = ''} = query;
   // console.log(q);
 
-  const [values, handleInputChange, reset] = useForm({
+  const [values, handleInputChange] = useForm({
     searchText: q,
   });
 
