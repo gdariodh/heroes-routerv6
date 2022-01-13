@@ -21,6 +21,7 @@ export const authReducer = (state = {}, action) => {
       return {
         ...state,
         logged: false,
+        user: {}
       };
 
     default:

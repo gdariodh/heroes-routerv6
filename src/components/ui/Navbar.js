@@ -5,7 +5,7 @@ import { types } from "../../types";
 export const Navbar = () => {
   const { state, dispatch } = useContext(AuthContext);
 
-  const { name } = state;
+  const { user } = state;
 
   const navigate = useNavigate();
 
@@ -58,7 +58,7 @@ export const Navbar = () => {
 
       <div className="navbar-collapse collapse w-100 order-3 dual-collapse2 d-flex justify-content-end">
         <ul className="navbar-nav ml-auto">
-          <span className="nav-item nav-link text-info">{name}</span>
+          <span className="nav-item nav-link text-info">{user.name}</span>
 
           <button
             onClick={handleLogout}

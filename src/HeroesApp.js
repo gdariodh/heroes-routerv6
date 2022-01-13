@@ -4,18 +4,25 @@ import { authReducer } from "./auth/authReducer";
 import AppRouter from "./routers/AppRouter";
 
 const init = () => {
-  return JSON.parse(localStorage.getItem('user'))  || {logged: false}
+  // si existe user en el local, mandamos el object initialValues con sus propiedades
+  // logged y user, sino mandamos el obj {logged:false}
+  return (
+    {
+      logged: true,
+      user: JSON.parse(localStorage.getItem("user")),
+    } || { logged: false }
+  );
 };
 
 const HeroesApp = () => {
-  // el init seria el state inicial cuando comienza la app, luego cuando va en curso toma el otro state 
+  // el init seria el state inicial cuando comienza la app, luego cuando va en curso toma el otro state
   const [state, dispatch] = useReducer(authReducer, {}, init);
 
   useEffect(() => {
-   if(!state.user) return;
+    if (!state.user) return;
 
-   localStorage.setItem('user', JSON.stringify(state.user))
-  }, [state.user])
+    localStorage.setItem("user", JSON.stringify(state.user));
+  }, [state.user]);
 
   return (
     <>
