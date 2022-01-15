@@ -8,7 +8,6 @@ const LoginScreen = () => {
   const { dispatch } = useContext(AuthContext);
 
   const handleLogin = () => {
-
     dispatch({
       type: types.login,
       payload: {
@@ -17,7 +16,10 @@ const LoginScreen = () => {
       },
     });
 
-    navigate("/marvel", {
+    // si existe lasthPath o sino asigna la redireccion a "/marvel"
+    const lastPath = localStorage.getItem("lastPath") || "/marvel";
+
+    navigate(lastPath, {
       replace: true,
     });
   };
