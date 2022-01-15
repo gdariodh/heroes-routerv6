@@ -6,12 +6,7 @@ import AppRouter from "./routers/AppRouter";
 const init = () => {
   // si existe user en el local, mandamos el object initialValues con sus propiedades
   // logged y user, sino mandamos el obj {logged:false}
-  return (
-    {
-      logged: false,
-      user: JSON.parse(localStorage.getItem("user")),
-    } || { logged: false }
-  );
+  return JSON.parse(localStorage.getItem("state")) || { logged: false };
 };
 
 const HeroesApp = () => {
@@ -21,7 +16,7 @@ const HeroesApp = () => {
   useEffect(() => {
     if (!state.user) return;
 
-    localStorage.setItem("user", JSON.stringify(state.user));
+    localStorage.setItem("state", JSON.stringify(state));
   }, [state.user]);
 
   return (

@@ -3,14 +3,13 @@ import { AuthContext } from "../auth/authContext";
 // Redirect component
 import { Navigate } from "react-router-dom";
 
-const PrivateRoute = ({ children }) => {
+const PublicRoute = ({ children }) => {
   const {
     state: { logged },
   } = useContext(AuthContext);
 
-  console.log(logged);
-
-  return logged ? children : <Navigate to={"/login"} />;
+  //   Navigate (-1) regresa a la pagina anterior, antes de manipular la url
+  return logged ? <Navigate to={-1} /> : children;
 };
 
-export default PrivateRoute;
+export default PublicRoute;
