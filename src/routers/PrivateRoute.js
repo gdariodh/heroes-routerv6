@@ -9,9 +9,9 @@ const PrivateRoute = ({ children }) => {
   } = useContext(AuthContext);
 
   // recordar ultima url del usuario en privateRoute
-   const location = useLocation();
+   const {pathname, search} = useLocation();
 
-   localStorage.setItem('lastPath', location.pathname);
+   localStorage.setItem('lastPath', pathname + search);
 
   //  end recordar ultima url - sigue en LoginScreen, donde se hace el redirect a lastPath
 
