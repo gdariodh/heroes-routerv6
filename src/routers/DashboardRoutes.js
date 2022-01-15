@@ -9,6 +9,7 @@ import Hero from "../components/hero/Hero";
 const DashBoardRoutes = () => {
   return (
     <>
+    {/* Layout */}
       <Navbar />
      
       <div className="container mt-5">

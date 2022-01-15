@@ -8,7 +8,7 @@ const init = () => {
   // logged y user, sino mandamos el obj {logged:false}
   return (
     {
-      logged: true,
+      logged: false,
       user: JSON.parse(localStorage.getItem("user")),
     } || { logged: false }
   );
